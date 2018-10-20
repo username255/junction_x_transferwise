@@ -1,0 +1,385 @@
+{
+  "version": "v1",
+  "config": {
+    "visState": {
+      "filters": [],
+      "layers": [
+        {
+          "id": "4enn81",
+          "type": "point",
+          "config": {
+            "dataId": "1831rwm8",
+            "label": "receiver",
+            "color": [
+              221,
+              178,
+              124
+            ],
+            "columns": {
+              "lat": "receiver_lat",
+              "lng": "receiver_lng",
+              "altitude": null
+            },
+            "isVisible": false,
+            "visConfig": {
+              "radius": 10,
+              "fixedRadius": false,
+              "opacity": 0.8,
+              "outline": false,
+              "thickness": 2,
+              "colorRange": {
+                "name": "Transferwise transactions [from - to]",
+                "type": "sequential",
+                "category": "Transferwise",
+                "colors": [
+                  "#5A1846",
+                  "#900C3F",
+                  "#C70039",
+                  "#E3611C",
+                  "#F1920E",
+                  "#FFC300"
+                ]
+              },
+              "radiusRange": [
+                0,
+                50
+              ],
+              "hi-precision": false
+            },
+            "textLabel": {
+              "field": null,
+              "color": [
+                255,
+                255,
+                255
+              ],
+              "size": 50,
+              "offset": [
+                0,
+                0
+              ],
+              "anchor": "middle"
+            }
+          },
+          "visualChannels": {
+            "colorField": null,
+            "colorScale": "quantile",
+            "sizeField": null,
+            "sizeScale": "linear"
+          }
+        },
+        {
+          "id": "4af521i",
+          "type": "point",
+          "config": {
+            "dataId": "1831rwm8",
+            "label": "sender",
+            "color": [
+              18,
+              147,
+              154,
+              255
+            ],
+            "columns": {
+              "lat": "sender_lat",
+              "lng": "sender_lng",
+              "altitude": null
+            },
+            "isVisible": false,
+            "visConfig": {
+              "radius": 10,
+              "fixedRadius": false,
+              "opacity": 0.8,
+              "outline": false,
+              "thickness": 2,
+              "colorRange": {
+                "name": "Global Warming",
+                "type": "sequential",
+                "category": "Uber",
+                "colors": [
+                  "#5A1846",
+                  "#900C3F",
+                  "#C70039",
+                  "#E3611C",
+                  "#F1920E",
+                  "#FFC300"
+                ]
+              },
+              "radiusRange": [
+                0,
+                50
+              ],
+              "hi-precision": false
+            },
+            "textLabel": {
+              "field": null,
+              "color": [
+                255,
+                255,
+                255
+              ],
+              "size": 50,
+              "offset": [
+                0,
+                0
+              ],
+              "anchor": "middle"
+            }
+          },
+          "visualChannels": {
+            "colorField": null,
+            "colorScale": "quantile",
+            "sizeField": null,
+            "sizeScale": "linear"
+          }
+        },
+        {
+          "id": "c5q7rio",
+          "type": "arc",
+          "config": {
+            "dataId": "1831rwm8",
+            "label": "Transferwise [ sender -> receiver arc ]",
+            "color": [
+              146,
+              38,
+              198,
+              255
+            ],
+            "columns": {
+              "lat0": "sender_lat",
+              "lng0": "sender_lng",
+              "lat1": "receiver_lat",
+              "lng1": "receiver_lng"
+            },
+            "isVisible": true,
+            "visConfig": {
+              "opacity": 0.8,
+              "thickness": 2,
+              "colorRange": {
+                "name": "Global Warming",
+                "type": "sequential",
+                "category": "Uber",
+                "colors": [
+                  "#5A1846",
+                  "#900C3F",
+                  "#C70039",
+                  "#E3611C",
+                  "#F1920E",
+                  "#FFC300"
+                ]
+              },
+              "sizeRange": [
+                0,
+                10
+              ],
+              "targetColor": null,
+              "hi-precision": false
+            },
+            "textLabel": {
+              "field": null,
+              "color": [
+                255,
+                255,
+                255
+              ],
+              "size": 50,
+              "offset": [
+                0,
+                0
+              ],
+              "anchor": "middle"
+            }
+          },
+          "visualChannels": {
+            "colorField": null,
+            "colorScale": "quantile",
+            "sizeField": null,
+            "sizeScale": "linear"
+          }
+        },
+        {
+          "id": "0tzsx8i",
+          "type": "line",
+          "config": {
+            "dataId": "1831rwm8",
+            "label": "sender -> receiver line",
+            "color": [
+              136,
+              87,
+              44
+            ],
+            "columns": {
+              "lat0": "sender_lat",
+              "lng0": "sender_lng",
+              "lat1": "receiver_lat",
+              "lng1": "receiver_lng"
+            },
+            "isVisible": false,
+            "visConfig": {
+              "opacity": 0.8,
+              "thickness": 2,
+              "colorRange": {
+                "name": "Global Warming",
+                "type": "sequential",
+                "category": "Uber",
+                "colors": [
+                  "#5A1846",
+                  "#900C3F",
+                  "#C70039",
+                  "#E3611C",
+                  "#F1920E",
+                  "#FFC300"
+                ]
+              },
+              "sizeRange": [
+                0,
+                10
+              ],
+              "targetColor": null,
+              "hi-precision": false
+            },
+            "textLabel": {
+              "field": null,
+              "color": [
+                255,
+                255,
+                255
+              ],
+              "size": 50,
+              "offset": [
+                0,
+                0
+              ],
+              "anchor": "middle"
+            }
+          },
+          "visualChannels": {
+            "colorField": null,
+            "colorScale": "quantile",
+            "sizeField": null,
+            "sizeScale": "linear"
+          }
+        },
+        {
+          "id": "9iimps",
+          "type": "geojson",
+          "config": {
+            "dataId": "1831rwm8",
+            "label": "Transferwise Demo Transactions",
+            "color": [
+              255,
+              153,
+              31
+            ],
+            "columns": {
+              "geojson": "_geojson"
+            },
+            "isVisible": false,
+            "visConfig": {
+              "opacity": 0.8,
+              "thickness": 0.5,
+              "colorRange": {
+                "name": "Global Warming",
+                "type": "sequential",
+                "category": "Uber",
+                "colors": [
+                  "#5A1846",
+                  "#900C3F",
+                  "#C70039",
+                  "#E3611C",
+                  "#F1920E",
+                  "#FFC300"
+                ]
+              },
+              "radius": 10,
+              "sizeRange": [
+                0,
+                10
+              ],
+              "radiusRange": [
+                0,
+                50
+              ],
+              "heightRange": [
+                0,
+                500
+              ],
+              "elevationScale": 5,
+              "hi-precision": false,
+              "stroked": true,
+              "filled": false,
+              "enable3d": false,
+              "wireframe": false
+            },
+            "textLabel": {
+              "field": null,
+              "color": [
+                255,
+                255,
+                255
+              ],
+              "size": 50,
+              "offset": [
+                0,
+                0
+              ],
+              "anchor": "middle"
+            }
+          },
+          "visualChannels": {
+            "colorField": null,
+            "colorScale": "quantile",
+            "sizeField": null,
+            "sizeScale": "linear",
+            "heightField": null,
+            "heightScale": "linear",
+            "radiusField": null,
+            "radiusScale": "linear"
+          }
+        }
+      ],
+      "interactionConfig": {
+        "tooltip": {
+          "fieldsToShow": {
+            "1831rwm8": [
+              "src_currency",
+              "profile_id",
+              "id",
+              "tgt_currency",
+              "source_amount"
+            ]
+          },
+          "enabled": false
+        },
+        "brush": {
+          "size": 0.5,
+          "enabled": false
+        }
+      },
+      "layerBlending": "normal",
+      "splitMaps": []
+    },
+    "mapState": {
+      "bearing": 0,
+      "dragRotate": false,
+      "latitude": 14.36703,
+      "longitude": 14.990830000000003,
+      "pitch": 0,
+      "zoom": 2,
+      "isSplit": false
+    },
+    "mapStyle": {
+      "styleType": "dark",
+      "topLayerGroups": {},
+      "visibleLayerGroups": {
+        "label": true,
+        "road": true,
+        "border": false,
+        "building": true,
+        "water": true,
+        "land": true
+      },
+      "mapStyles": {}
+    }
+  }
+}

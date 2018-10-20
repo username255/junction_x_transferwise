@@ -32,14 +32,16 @@ const KeplerGl = require('kepler.gl/components').injectComponents([
   replaceLoadDataModal()
 ]);
 
-const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
+const MAPBOX_TOKEN = 'pk.eyJ1IjoidXNlcm5hbWUyNTUiLCJhIjoiY2puaDlsaWFpMGFwNzNrdGxtOTgwNzI4dyJ9.42pNBH5m8CQTjAdWi66obQ'; // eslint-disable-line
 
 // Sample data
 /* eslint-disable no-unused-vars */
-import sampleTripData from './data/sample-trip-data';
-import sampleGeojson from './data/sample-geojson.json';
-import sampleH3Data from './data/sample-hex-id-csv';
-import sampleIconCsv, {config as savedMapConfig} from './data/sample-icon-csv';
+// import sampleTripData from './data/sample-trip-data';
+// import sampleGeojson from './data/sample-geojson.json';
+import transferwiseData from './data/transferwise_sample_mod.json';
+import transferwiseConfig from './configurations/config.json';
+// import sampleH3Data from './data/sample-hex-id-csv';
+// import sampleIconCsv, {config as savedMapConfig} from './data/sample-icon-csv';
 import {updateVisData, addDataToMap} from 'kepler.gl/actions';
 import Processors from 'kepler.gl/processors';
 /* eslint-enable no-unused-vars */
@@ -80,11 +82,11 @@ class App extends Component {
 
   componentDidMount() {
     // delay 2s to show the banner
-    if (!window.localStorage.getItem(BannerKey)) {
-      window.setTimeout(this._showBanner, 3000);
-    }
+    // if (!window.localStorage.getItem(BannerKey)) {
+    //   // window.setTimeout(this._showBanner, 3000);
+    // }
     // load sample data
-    // this._loadSampleData();
+    this._loadSampleData();
   }
 
   componentWillUnmount() {
@@ -111,92 +113,111 @@ class App extends Component {
     window.localStorage.setItem(BannerKey, 'true');
   };
 
+  getMapConfig() {
+    // retrieve kepler.gl store
+    const {keplerGl} = this.props;
+    // retrieve current kepler.gl instance store
+    const {map} = keplerGl;
+
+    // create the config object
+    return KeplerGlSchema.getConfigToSave(map);
+  }
+
+
+
   _loadSampleData() {
-    this.props.dispatch(
-      updateVisData(
-        // datasets
-        {
-          info: {
-            label: 'Sample Taxi Trips in New York City',
-            id: 'test_trip_data'
-          },
-          data: sampleTripData
-        },
-        // option
-        {
-          centerMap: true,
-          readOnly: false
-        },
-        // config
-        {
-          filters: [
-            {
-              id: 'me',
-              dataId: 'test_trip_data',
-              name: 'tpep_pickup_datetime',
-              type: 'timeRange',
-              enlarged: true
-            }
-          ]
-        }
-      )
-    );
+    // this.props.dispatch(
+    //   updateVisData(
+    //     // datasets
+    //     {
+    //       info: {
+    //         label: 'Transferwise Demo Transactions',
+    //         id: 'test_transactions_data'
+    //       },
+    //       data: sampleTripData
+    //     },
+    //     // option
+    //     {
+    //       centerMap: true,
+    //       readOnly: false
+    //     },
+    //     // config
+    //     {
+    //       filters: [
+    //         {
+    //           id: 'me',
+    //           dataId: 'test_transactions_data',
+    //           name: 'tpep_pickup_datetime',
+    //           type: 'timeRange',
+    //           enlarged: true
+    //         }
+    //       ]
+    //     }
+    //   )
+    // );
 
     // load icon data and config and process csv file
-    this.props.dispatch(
-      addDataToMap({
-        datasets: [
-          {
-            info: {
-              label: 'Icon Data',
-              id: 'test_icon_data'
-            },
-            data: Processors.processCsvData(sampleIconCsv)
-          }
-        ],
-        options: {
-          centerMap: false
-        },
-        config: savedMapConfig
-      })
-    );
+    // this.props.dispatch(
+    //   addDataToMap({
+    //     datasets: [
+    //       {
+    //         info: {
+    //           label: 'Icon Data',
+    //           id: 'test_icon_data'
+    //         },
+    //         data: Processors.processCsvData(sampleIconCsv)
+    //       }
+    //     ],
+    //     options: {
+    //       centerMap: false
+    //     },
+    //     config: savedMapConfig
+    //   })
+    // );
 
     // load geojson
     this.props.dispatch(
       updateVisData({
-        info: {label: 'SF Zip Geo'},
-        data: Processors.processGeojson(sampleGeojson)
-      })
+        data: Processors.processGeojson(transferwiseData),
+      },
+      {
+        centerMap: true,
+        readOnly: true
+      }
+
+      )
     );
 
+    // this.props.dispatch(addDataToMap({datasets: Processors.processGeojson(transferwiseData), config: transferwiseConfig}));
+
     // load h3 hexagon
-    this.props.dispatch(
-      addDataToMap({
-        datasets: [
-          {
-            info: {
-              label: 'H3 Hexagons V2',
-              id: 'h3-hex-id'
-            },
-            data: Processors.processCsvData(sampleH3Data)
-          }
-        ]
-      })
-    );
+    // this.props.dispatch(
+    //   addDataToMap({
+    //     datasets: [
+    //       {
+    //         info: {
+    //           label: 'H3 Hexagons V2',
+    //           id: 'h3-hex-id'
+    //         },
+    //         data: Processors.processCsvData(sampleH3Data)
+    //       }
+    //     ]
+    //   })
+    // );
   }
 
   render() {
     const {showBanner, width, height} = this.state;
     return (
       <GlobalStyleDiv>
-        <Banner
+        {/* <Banner
           show={this.state.showBanner}
           height={BannerHeight}
           bgColor="#82368c"
           onClose={this._hideBanner}
         >
           <Announcement onDisable={this._disableBanner}/>
-        </Banner>
+        </Banner> */}
         <div
           style={{
             transition: 'margin 1s, height 1s',
@@ -212,10 +233,12 @@ class App extends Component {
             id="map"
             /*
              * Specify path to keplerGl state, because it is not mount at the root
+             *
+             * height={height - (showBanner ? BannerHeight : 0)}
              */
             getState={state => state.demo.keplerGl}
             width={width}
-            height={height - (showBanner ? BannerHeight : 0)}
+            height={height}
           />
         </div>
       </GlobalStyleDiv>
