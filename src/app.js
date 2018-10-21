@@ -45,6 +45,8 @@ import config from './configurations/config.json';
 // import sampleIconCsv, {config as savedMapConfig} from './data/sample-icon-csv';
 import {updateVisData, addDataToMap} from 'kepler.gl/actions';
 import Processors from 'kepler.gl/processors';
+
+import store from './store';
 /* eslint-enable no-unused-vars */
 
 const BannerHeight = 30;
@@ -189,7 +191,7 @@ class App extends Component {
     this.props.dispatch(addDataToMap({datasets: dataset,
       options: {
           centerMap: true,
-          readOnly: false,
+          readOnly: true,
           // mapControls: {
           //   visibleLayers: {
           //     show: false
@@ -207,6 +209,13 @@ class App extends Component {
           // }
         },
       config}));
+
+      window.setTimeout(() => {
+
+        document.querySelectorAll('.bottom-widget--inner .sc-bMvGRv')[0].click();
+        document.querySelectorAll('.time-range-slider__control .playback-control-button')[1].click();
+
+      }, 3000);
 
 
     // load geojson
