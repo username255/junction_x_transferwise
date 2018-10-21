@@ -39,7 +39,8 @@ const MAPBOX_TOKEN = 'pk.eyJ1IjoidXNlcm5hbWUyNTUiLCJhIjoiY2puaDlsaWFpMGFwNzNrdGx
 // import sampleTripData from './data/sample-trip-data';
 // import sampleGeojson from './data/sample-geojson.json';
 import transferwiseData from './data/transferwise_sample_mod.json';
-import transferwiseConfig from './configurations/config.json';
+// import twDataCsv from './data/transferwise_dataset_mod.csv';
+import config from './configurations/config.json';
 // import sampleH3Data from './data/sample-hex-id-csv';
 // import sampleIconCsv, {config as savedMapConfig} from './data/sample-icon-csv';
 import {updateVisData, addDataToMap} from 'kepler.gl/actions';
@@ -174,21 +175,71 @@ class App extends Component {
     //     config: savedMapConfig
     //   })
     // );
+    const data = Processors.processGeojson(transferwiseData);
+
+    const dataset = {
+      data,
+      info: {
+        id: 'my_data'
+        // this is used to match the dataId defined in nyc-config.json. For more details see API documentation.
+        // It is paramount that this id mathces your configuration otherwise the configuration file will be ignored.
+      }
+    };
+    // const config = this.getMapConfig();
+    this.props.dispatch(addDataToMap({datasets: dataset,
+      options: {
+          centerMap: true,
+          readOnly: false,
+          // mapControls: {
+          //   visibleLayers: {
+          //     show: false
+          //   },
+          //   toggle3d: {
+          //     show: false
+          //   },
+          //   splitMap: {
+          //     show: false
+          //   },
+          //   mapLegend: {
+          //     show: false,
+          //     active: true
+          //   }
+          // }
+        },
+      config}));
+
 
     // load geojson
-    this.props.dispatch(
-      updateVisData({
-        data: Processors.processGeojson(transferwiseData),
-      },
-      {
-        centerMap: true,
-        readOnly: true
-      }
+    // this.props.dispatch(
+    //   updateVisData({
+    //     data: Processors.processGeojson(transferwiseData),
+    //   },
+    //   {
+    //     centerMap: true,
+    //     readOnly: false,
+    //     mapControls: {
+	  //       visibleLayers: {
+	  //         show: false
+	  //       },
+	  //       toggle3d: {
+	  //         show: false
+	  //       },
+	  //       splitMap: {
+	  //         show: true
+	  //       },
+	  //       mapLegend: {
+	  //         show: true,
+	  //         active: false
+	  //       }
+	  //     }
+    //   },
+    //   {
+    //     config: config
+    //   }
+    //   )
+    // );
 
-      )
-    );
-
-    // this.props.dispatch(addDataToMap({datasets: Processors.processGeojson(transferwiseData), config: transferwiseConfig}));
+    // this.props.dispatch(addDataToMap({ datasets: { data: Processors.processGeojson(transferwiseData)}, config: config }));
 
     // load h3 hexagon
     // this.props.dispatch(

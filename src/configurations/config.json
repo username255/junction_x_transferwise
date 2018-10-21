@@ -2,77 +2,27 @@
   "version": "v1",
   "config": {
     "visState": {
-      "filters": [],
+      "filters": [
+        {
+          "dataId": "my_data",
+          "id": "q4e6m63zi",
+          "name": "submit_time",
+          "type": "timeRange",
+          "value": [
+            1540083600000,
+            1540083605000
+          ],
+          "enlarged": true,
+          "plotType": "histogram",
+          "yAxis": null
+        }
+      ],
       "layers": [
         {
-          "id": "4enn81",
+          "id": "29lm3h5",
           "type": "point",
           "config": {
-            "dataId": "1831rwm8",
-            "label": "receiver",
-            "color": [
-              221,
-              178,
-              124
-            ],
-            "columns": {
-              "lat": "receiver_lat",
-              "lng": "receiver_lng",
-              "altitude": null
-            },
-            "isVisible": false,
-            "visConfig": {
-              "radius": 10,
-              "fixedRadius": false,
-              "opacity": 0.8,
-              "outline": false,
-              "thickness": 2,
-              "colorRange": {
-                "name": "Transferwise transactions [from - to]",
-                "type": "sequential",
-                "category": "Transferwise",
-                "colors": [
-                  "#5A1846",
-                  "#900C3F",
-                  "#C70039",
-                  "#E3611C",
-                  "#F1920E",
-                  "#FFC300"
-                ]
-              },
-              "radiusRange": [
-                0,
-                50
-              ],
-              "hi-precision": false
-            },
-            "textLabel": {
-              "field": null,
-              "color": [
-                255,
-                255,
-                255
-              ],
-              "size": 50,
-              "offset": [
-                0,
-                0
-              ],
-              "anchor": "middle"
-            }
-          },
-          "visualChannels": {
-            "colorField": null,
-            "colorScale": "quantile",
-            "sizeField": null,
-            "sizeScale": "linear"
-          }
-        },
-        {
-          "id": "4af521i",
-          "type": "point",
-          "config": {
-            "dataId": "1831rwm8",
+            "dataId": "my_data",
             "label": "sender",
             "color": [
               18,
@@ -134,15 +84,79 @@
           }
         },
         {
-          "id": "c5q7rio",
+          "id": "wo3xk4l",
+          "type": "point",
+          "config": {
+            "dataId": "my_data",
+            "label": "receiver",
+            "color": [
+              221,
+              178,
+              124
+            ],
+            "columns": {
+              "lat": "receiver_lat",
+              "lng": "receiver_lng",
+              "altitude": null
+            },
+            "isVisible": false,
+            "visConfig": {
+              "radius": 10,
+              "fixedRadius": false,
+              "opacity": 0.8,
+              "outline": false,
+              "thickness": 2,
+              "colorRange": {
+                "name": "Global Warming",
+                "type": "sequential",
+                "category": "Uber",
+                "colors": [
+                  "#5A1846",
+                  "#900C3F",
+                  "#C70039",
+                  "#E3611C",
+                  "#F1920E",
+                  "#FFC300"
+                ]
+              },
+              "radiusRange": [
+                0,
+                50
+              ],
+              "hi-precision": false
+            },
+            "textLabel": {
+              "field": null,
+              "color": [
+                255,
+                255,
+                255
+              ],
+              "size": 50,
+              "offset": [
+                0,
+                0
+              ],
+              "anchor": "middle"
+            }
+          },
+          "visualChannels": {
+            "colorField": null,
+            "colorScale": "quantile",
+            "sizeField": null,
+            "sizeScale": "linear"
+          }
+        },
+        {
+          "id": "qj7hqrk",
           "type": "arc",
           "config": {
-            "dataId": "1831rwm8",
-            "label": "Transferwise [ sender -> receiver arc ]",
+            "dataId": "my_data",
+            "label": "sender -> receiver arc",
             "color": [
-              146,
-              38,
-              198,
+              44,
+              81,
+              190,
               255
             ],
             "columns": {
@@ -170,9 +184,14 @@
               },
               "sizeRange": [
                 0,
-                10
+                3
               ],
-              "targetColor": null,
+              "targetColor": [
+                103,
+                11,
+                140,
+                255
+              ],
               "hi-precision": false
             },
             "textLabel": {
@@ -193,15 +212,18 @@
           "visualChannels": {
             "colorField": null,
             "colorScale": "quantile",
-            "sizeField": null,
+            "sizeField": {
+              "name": "source_amount",
+              "type": "integer"
+            },
             "sizeScale": "linear"
           }
         },
         {
-          "id": "0tzsx8i",
+          "id": "6olevk",
           "type": "line",
           "config": {
-            "dataId": "1831rwm8",
+            "dataId": "my_data",
             "label": "sender -> receiver line",
             "color": [
               136,
@@ -261,11 +283,11 @@
           }
         },
         {
-          "id": "9iimps",
+          "id": "h5v3o09",
           "type": "geojson",
           "config": {
-            "dataId": "1831rwm8",
-            "label": "Transferwise Demo Transactions",
+            "dataId": "my_data",
+            "label": "new dataset",
             "color": [
               255,
               153,
@@ -341,7 +363,7 @@
       "interactionConfig": {
         "tooltip": {
           "fieldsToShow": {
-            "1831rwm8": [
+            "my_data": [
               "src_currency",
               "profile_id",
               "id",
@@ -360,22 +382,22 @@
       "splitMaps": []
     },
     "mapState": {
-      "bearing": 0,
-      "dragRotate": false,
-      "latitude": 14.36703,
-      "longitude": 14.990830000000003,
-      "pitch": 0,
-      "zoom": 2,
+      "bearing": 24,
+      "dragRotate": true,
+      "latitude": 22.60390098562804,
+      "longitude": -32.791932344124085,
+      "pitch": 50,
+      "zoom": 1.1494882410331009,
       "isSplit": false
     },
     "mapStyle": {
-      "styleType": "dark",
+      "styleType": "muted_night",
       "topLayerGroups": {},
       "visibleLayerGroups": {
         "label": true,
-        "road": true,
+        "road": false,
         "border": false,
-        "building": true,
+        "building": false,
         "water": true,
         "land": true
       },
