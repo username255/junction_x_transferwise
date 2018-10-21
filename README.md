@@ -22,3 +22,6 @@ then
 ```
 npm start
 ```
+___
+
+![x](https://media.giphy.com/media/3osxYamKD88c6pXdfO/giphy.gif)
