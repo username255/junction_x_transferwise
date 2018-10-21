@@ -18,11 +18,18 @@
         }
        body {margin: 0; padding: 0; overflow: hidden; background: #1e2227; }
        .bottom-widget--inner, .map-control { display: none; }
-       #count { cursor: pointer; z-index: 42; -webkit-font-smoothing: antialiased; letter-spacing: 0.02em; padding: 20px; font-family: "GTEestiDisplay-Medium", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; color: #9e90ff82; font-size: 20px; }
+       #count { cursor: pointer; z-index: 42; -webkit-font-smoothing: antialiased; letter-spacing: 0.02em; padding: 20px; font-family: "GTEestiDisplay-Medium", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; color: #9e90ff82; font-size: 20px; position: absolute; }
+       /* #bubbles { position: absolute; width: 30vw; height: 80vh; bottom: 0; left: 0; background: transparent; } */
+       .bubble-x-y-z { background: #0d0a58; opacity: .88; width: 88px; height: 6px; padding: 16px; margin-left: 40px; border-radius: 36px; border: solid 3px grey; font-family: sans-serif; color: #ddd; font-size: 12px; line-height: 7px; text-align: center; display: none; position: absolute; top: 20%; left: 40px; z-index: 9000; transition-duration: 4s; }
+       .animate-bubble { top: 80%; display: block; transition-duration: 4s; }
+
     </style>
   </head>
   <body>
     <h2 id="count" ></h2>
+    <div id="bubbles" >
+        <div class="bubble-x-y-z"></div>
+    </div>
     <script src='bundle.js'></script>
   </body>
 </html>
